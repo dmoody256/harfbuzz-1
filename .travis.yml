@@ -22,7 +22,7 @@ matrix:
         - bash .ci/build-freetype.sh
 
         - ./autogen.sh
-        - ./configure $CONFIGURE_OPTS --enable-gtk-doc --enable-code-coverage --enable
+        - ./configure $CONFIGURE_OPTS --enable-gtk-doc --enable-code-coverage
         - make
         - make check || .ci/fail.sh
         - rm -rf freetype-2.9
