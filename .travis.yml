@@ -22,7 +22,7 @@ matrix:
         - bash .ci/build-freetype.sh
 
         - ./autogen.sh
-        - ./configure --with-gobject --enable-introspection
+        - ./configure --enable-introspection --with-gobject 
         - make
         - make check || .ci/fail.sh
         - rm -rf freetype-2.9
@@ -65,7 +65,7 @@ addons:
       - libcairo2-dev # for utils
       - libicu-dev # for extra unicode functions
       - libgraphite2-dev # for extra shapers
-      #- libgirepository1.0-dev # for gobject-introspection
+      - libgirepository1.0-dev # for gobject-introspection
 
   coverity_scan:
     project:
@@ -73,6 +73,6 @@ addons:
       version: 1.0
       description: HarfBuzz OpenType text shaping engine
     notification_email: harfbuzz-bots-chatter@googlegroups.com
-    build_command_prepend: ./autogen.sh --with-freetype --with-glib --with-gobject --with-cairo --with-icu --with-graphite2
+    build_command_prepend: ./autogen.sh --enable-introspection --with-freetype --with-glib --with-gobject --with-cairo --with-icu --with-graphite2
     build_command: make
     branch_pattern: coverity_scan
